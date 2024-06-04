@@ -132,9 +132,9 @@ python3 wukong.py
 #### 离线唤醒机制初始化失败：[Errno -9996] Invalid input device (no default output device)
 1. 启动了多个 personal-assistant 了。请kill 掉所有后台的 wukong 进程。
 2. WSL方式下的声音问题：  
-   请在此下载 pulseaudio：https://www.freedesktop.org/wiki/Software/PulseAudio/Ports/Windows/Support/
+   请在此下载 pulseaudio：https://www.freedesktop.org/wiki/Software/PulseAudio/Ports/Windows/Support/  
    按照这篇文章配置：https://blog.csdn.net/jiexijihe945/article/details/131680406 和  
-   https://martin1994.sinaapp.com/archives/916
+   https://martin1994.sinaapp.com/archives/916  
    文中的ip不要用127.0.0.1或者localhost
 
 #### 提示音可以播放，但是tts没有声音
