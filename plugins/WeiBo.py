@@ -1,7 +1,7 @@
 # -*- coding: utf-8-*-
 from robot.sdk import unit
 from robot.sdk.AbstractPlugin import AbstractPlugin
-from sdk.weibo import WeiBo
+from plugins.sdk.weibo import WeiBo
 
 weibo = WeiBo()
 

@@ -8,7 +8,7 @@ from random import shuffle
 from robot.sdk.AbstractPlugin import AbstractPlugin
 from robot.Player import MusicPlayer
 from robot import config, logging
-from sdk import NetEaseApi
+from plugins.sdk import NetEaseApi
 
 logger = logging.getLogger(__name__)
 CONF_PATH = os.path.expanduser("~/.neteasemusic")

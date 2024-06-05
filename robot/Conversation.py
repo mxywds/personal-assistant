@@ -69,6 +69,7 @@ class Conversation(object):
                 voice = utils.getCache(msg)
                 while index != self.tts_index:
                     # 阻塞直到轮到这个音频播放
+                    time.sleep(1)
                     continue
                 with self.play_lock:
                     self.player.play(
@@ -84,6 +85,7 @@ class Conversation(object):
                     logger.info(f"第{index}段TTS合成成功。msg: {msg}")
                     while index != self.tts_index:
                         # 阻塞直到轮到这个音频播放
+                        time.sleep(1)
                         continue
                     with self.play_lock:
                         logger.info(f"即将播放第{index}段TTS。msg: {msg}")
@@ -393,6 +395,10 @@ class Conversation(object):
 
         if not msg:
             return
+
+        if not 'chat-tts' == config.get("tts_engine", "baidu-tts"):
+            logger.info("非chat-tts引擎，清空情感控制")
+            msg = re.sub(r'\[.*?\]', '', msg)
 
         logger.info(f"即将朗读语音：{msg}")
         lines = re.split("。|！|？|\!|\?|\n", msg)
