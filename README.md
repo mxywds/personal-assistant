@@ -21,18 +21,44 @@
   </p>
 </p>
 
+<!-- TOC -->
+* [personal-assistant](#personal-assistant)
+  * [新增功能点](#新增功能点)
+  * [开发计划](#开发计划)
+  * [环境要求](#环境要求)
+    * [Python 版本](#python-版本)
+    * [设备要求](#设备要求)
+  * [手动安装](#手动安装)
+    * [第一步](#第一步)
+    * [第二步](#第二步)
+    * [第三步](#第三步)
+      * [编译 _snowboydetect.so](#编译-_snowboydetectso)
+  * [常见问题](#常见问题)
+    * [apt-get 或 pip 下载速度过慢](#apt-get-或-pip-下载速度过慢)
+    * [唤醒词训练：](#唤醒词训练)
+      * [snowboy：](#snowboy)
+      * [porcupine：](#porcupine)
+    * [No module named _snowboydetect](#no-module-named-_snowboydetect)
+    * [No such file or directory: 'play'](#no-such-file-or-directory-play)
+    * [离线唤醒机制初始化失败：[Errno -9996] Invalid input device (no default output device)](#离线唤醒机制初始化失败errno--9996-invalid-input-device-no-default-output-device)
+    * [提示音可以播放，但是tts没有声音](#提示音可以播放但是tts没有声音)
+    * [其他问题](#其他问题)
+  * [作者](#作者)
+  * [版权说明](#版权说明)
+<!-- TOC -->
+
 ## 新增功能点
 * 增加对百度大语言模型`ERNIE`的支持
 * 增加对`ChatTTS`的支持
 
 
 ## 开发计划
-1. [ ] 控制ChatTTS笑声停顿位置及多说话人
+1. [x] 控制ChatTTS笑声停顿位置
 2. [ ] 完善技能能力（对外部api或设备的调用，指令切换音色，语言模型等）
-3. [ ] 对话可打断
-4. [ ] 加快应答速度
-5. [ ] 重构web端
-6. [ ] 知识库
+3. [ ] 加快应答速度
+4. [ ] 重构web端
+5. [ ] 知识库
+
 
 
 ## 环境要求
@@ -49,7 +75,7 @@ personal-assistant 支持运行在以下的设备和系统中：
 * Intel Edison with Ubilinux （Debian Wheezy 7.8）
 * 装有 WSL（Windows Subsystem for Linux） 的 Windows
 
-### 手动安装
+## 手动安装
 ### 第一步
 ```shell
 sudo apt-get update -y
@@ -104,12 +130,12 @@ python3 wukong.py
 
 
 
-### 常见问题
-#### apt-get 或 pip 下载速度过慢
+## 常见问题
+### apt-get 或 pip 下载速度过慢
 请自行换源
 
-#### 唤醒词训练：
-#### 二选一
+### 唤醒词训练：
+`snowboy`和`porcupine` 二选一
 #### snowboy：
 1. 访问唤醒词训练服务 https://snowboy.hahack.com ；
 2. 训练你自己的模型；
@@ -121,15 +147,15 @@ python3 wukong.py
 2. 完成后保存到 ~/.wukong 目录中。
 3. 修改 config.yml 中 porcupine 的 keyword_paths 配置，增加你训练好的模型的文件名。
 
-#### No module named _snowboydetect
+### No module named _snowboydetect
 1. 使用 Python 3 执行本程序
 2. 确保用上了平台可用的 _snowboydetect.so 包。(注意：WSL方式下，请不要直接运行在win系统，比如在编辑器直接跑就会报这个错误)
 
-#### No such file or directory: 'play'
+### No such file or directory: 'play'
 ```sudo apt-get install sox ```
 
 
-#### 离线唤醒机制初始化失败：[Errno -9996] Invalid input device (no default output device)
+### 离线唤醒机制初始化失败：[Errno -9996] Invalid input device (no default output device)
 1. 启动了多个 personal-assistant 了。请kill 掉所有后台的 wukong 进程。
 2. WSL方式下的声音问题：  
    请在此下载 pulseaudio：https://www.freedesktop.org/wiki/Software/PulseAudio/Ports/Windows/Support/  
@@ -137,10 +163,10 @@ python3 wukong.py
    https://martin1994.sinaapp.com/archives/916  
    文中的ip不要用127.0.0.1或者localhost
 
-#### 提示音可以播放，但是tts没有声音
+### 提示音可以播放，但是tts没有声音
 `sudo apt-get install libsox-fmt-mp3`
 
-#### 其他问题
+### 其他问题
 可参考原作者文档：[wukong-robot](https://wukong.hahack.com/#/README)  
 原作者信息：
 ```
@@ -154,13 +180,13 @@ python3 wukong.py
 }
 ```
 
-### 作者
+## 作者
 
 ss.ok@foxmail.com
 
 *您也可以在贡献者名单中参看所有参与该项目的开发者。*
 
-### 版权说明
+## 版权说明
 
 该项目签署了MIT 授权许可，详情请参阅 [LICENSE](https://github.com/mxywds/personal-assistant/blob/master/LICENSE.txt)
 
